@@ -9,8 +9,11 @@ import ssl
 print(ssl.get_default_verify_paths())
 
 AIO_FEED_ID = "sensor1"
-AIO_USERNAME = "phucnguyenng"
-AIO_KEY = "aio_paYN09wK5fmBNFRru9LEiNBO0png"
+# read from .env
+with open(".env") as f:
+    lines = f.readlines()
+    AIO_USERNAME = lines[0].strip()
+    AIO_KEY = lines[1].strip()
 
 
 def connected(client):
