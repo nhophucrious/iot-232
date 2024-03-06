@@ -7,6 +7,8 @@ from dotenv import load_dotenv
 import time
 import random
 
+from simple_ai_2 import *
+
 # os.environ['REQUESTS_CA_BUNDLE'] = '/usr/local/etc/openssl@1.1/cert.pem'
 os.environ['SSL_CERT_FILE'] = '/etc/ssl/cert.pem'
 
@@ -55,6 +57,7 @@ client.connect()
 client.loop_background() # loop foreground blocks everything...
 
 counter = 10
+ai_counter = 5
 my_type = 0
 while True:
     counter -= 1
@@ -77,6 +80,19 @@ while True:
             humidity = random.randint(60, 100)
             client.publish("sensor3", humidity)
             my_type = 0
+
+    ai_counter -= 1
+    if ai_counter <= 0:
+        ai_counter = 5
+        print("running AI...")
+        result = img_detector()
+        client.publish("ai", result)
+
     # sleep for one second
     time.sleep(1) 
-    pass
+    # # Listen to the keyboard for presses.
+    # keyboard_input = cv2.waitKey(1)
+
+    # # 27 is the ASCII for the esc key on your keyboard.
+    # if keyboard_input == 27:
+    #     break

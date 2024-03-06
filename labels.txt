@@ -1,2 +1,3 @@
-0 wearing_glasses
-1 not_wearing_glasses
+0 person_wearing_glasses
+1 person_not_wearing_glasses
+2 not_a_person
