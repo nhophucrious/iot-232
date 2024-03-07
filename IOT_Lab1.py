@@ -8,6 +8,7 @@ import time
 import random
 
 from simple_ai_2 import *
+from uart import *
 
 # os.environ['REQUESTS_CA_BUNDLE'] = '/usr/local/etc/openssl@1.1/cert.pem'
 os.environ['SSL_CERT_FILE'] = '/etc/ssl/cert.pem'
@@ -80,6 +81,10 @@ while True:
             humidity = random.randint(60, 100)
             client.publish("sensor3", humidity)
             my_type = 0
+
+    
+    # lab 3
+    # read_serial(client=client)
 
     ai_counter -= 1
     if ai_counter <= 0:
